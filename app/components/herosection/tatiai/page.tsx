@@ -38,7 +38,7 @@ const CATEGORY_DATA = {
     forBeginners:
       "単なる喧嘩ではなく、厳格なルールの下で行われる「安全な実戦」です。相手の動きを読み、一瞬の隙を突くスピード感が見どころです。",
     images: ["/DSC03362.jpg", "/DSC03443.jpg", "/DSC03512.jpg"],
-    links: [{ label: "防具の着用規定・認可リスト", icon: FileText }],
+    links: [{ label: "防具の着用規定・認可リスト", icon: FileText, disabled: false }],
   },
   taikai: {
     id: "taikai",
@@ -56,8 +56,8 @@ const CATEGORY_DATA = {
       "/IMG_3606.jpg",
     ],
     links: [
-      { label: "次期大会のエントリーフォーム", icon: Calendar },
-      { label: "参加大学一覧・座席表", icon: Users },
+      { label: "次期大会のエントリーフォーム", icon: Calendar, disabled: false },
+      { label: "参加大学一覧・座席表", icon: Users, disabled: false },
     ],
   },
 };
@@ -246,26 +246,52 @@ export default function CategoryDetailPage() {
               関連リソース
             </h2>
             <div className="grid gap-4">
-              {data.links.map((link, idx) => (
-                <a
-                  key={idx}
-                  href="#"
-                  className="group flex items-center justify-between rounded-2xl bg-white/5 p-6 transition-all hover:bg-white/10 hover:translate-x-2 border border-transparent hover:border-white/10"
-                >
-                  <div className="flex items-center gap-5">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white transition-all">
-                      <link.icon size={24} />
+              {data.links.map((link, idx) => {
+                const isDisabled = link.disabled === true;
+                const LinkWrapper = isDisabled ? 'div' : 'a';
+                return (
+                  <LinkWrapper
+                    key={idx}
+                    href={isDisabled ? undefined : "#"}
+                    className={`group flex items-center justify-between rounded-2xl bg-white/5 p-6 transition-all border ${
+                      isDisabled
+                        ? "opacity-50 cursor-not-allowed border-white/5"
+                        : "hover:bg-white/10 hover:translate-x-2 border-transparent hover:border-white/10 cursor-pointer"
+                    }`}
+                    onClick={isDisabled ? (e) => e.preventDefault() : undefined}
+                  >
+                    <div className="flex items-center gap-5">
+                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                        isDisabled
+                          ? "bg-[#d4af37]/5 text-[#d4af37]/50"
+                          : "bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white"
+                      } transition-all`}>
+                        <link.icon size={24} />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className={`text-xl font-semibold tracking-wide ${
+                          isDisabled
+                            ? "text-[#fffffb]/60"
+                            : "text-[#fffffb] group-hover:text-[#d4af37]"
+                        } transition-colors`}>
+                          {link.label}
+                        </span>
+                        {isDisabled && (
+                          <span className="text-sm text-[#fffffb]/40 mt-1">
+                            ※準備中
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <span className="text-xl font-semibold tracking-wide transition-colors group-hover:text-[#d4af37] text-[#fffffb]">
-                      {link.label}
-                    </span>
-                  </div>
-                  <ChevronRight
-                    size={24}
-                    className="text-white/20 group-hover:text-white transition-colors"
-                  />
-                </a>
-              ))}
+                    {!isDisabled && (
+                      <ChevronRight
+                        size={24}
+                        className="text-white/20 group-hover:text-white transition-colors"
+                      />
+                    )}
+                  </LinkWrapper>
+                );
+              })}
             </div>
             <div className="mt-16 p-6 rounded-xl bg-gradient-to-br from-[#181b26] to-transparent border-l-2 border-[#d4af37]/50">
               <p className="text-sm text-[#fffffb]/50 leading-relaxed">
