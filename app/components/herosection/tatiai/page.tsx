@@ -73,6 +73,7 @@ type CategoryKey = keyof typeof CATEGORY_DATA;
 export default function CategoryDetailPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("tachiai");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFadingOut, setIsFadingOut] = useState(false);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -109,7 +110,13 @@ export default function CategoryDetailPage() {
     setCurrentImageIndex(randomIndex);
 
     const slideInterval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % data.images.length);
+      // まずフェードアウトを開始
+      setIsFadingOut(true);
+      // フェードアウトが完了したら画像を切り替えてフェードイン
+      setTimeout(() => {
+        setCurrentImageIndex((prev) => (prev + 1) % data.images.length);
+        setIsFadingOut(false);
+      }, 400); // フェードアウトの時間
     }, 6000);
 
     return () => clearInterval(slideInterval);
@@ -143,22 +150,29 @@ export default function CategoryDetailPage() {
       {/* スライドショーセクション */}
       <section className="relative h-[60vh] w-full overflow-hidden md:h-[75vh]">
         {/* スライド画像 */}
-        {data.images.map((imgUrl, index) => (
-          <div
-            key={imgUrl}
-            className={`absolute inset-0 transition-opacity duration-500 ease-out ${
-              index === currentImageIndex
-                ? "opacity-100 scale-105"
-                : "opacity-0 scale-100"
-            }`}
-          >
-            <img
-              src={imgUrl}
-              alt={`${data.title}イメージ`}
-              className="h-full w-full object-cover transition-transform duration-[10000ms] ease-linear transform scale-110"
-            />
-          </div>
-        ))}
+        {data.images.map((imgUrl, index) => {
+          const isActive = index === currentImageIndex;
+          // フェードアウト中で、かつ現在アクティブな画像の場合、opacityを0に近づける
+          const opacity = isFadingOut && isActive ? 0 : (isActive ? 1 : 0);
+          return (
+            <div
+              key={imgUrl}
+              className={`absolute inset-0 transition-opacity duration-400 ease-out ${
+                isActive ? 'scale-105' : 'scale-100'
+              }`}
+              style={{
+                opacity: opacity,
+                transitionDuration: '400ms',
+              }}
+            >
+              <img
+                src={imgUrl}
+                alt={`${data.title}イメージ`}
+                className="h-full w-full object-cover transition-transform duration-[10000ms] ease-linear transform scale-110"
+              />
+            </div>
+          );
+        })}
 
         {/* 下部へのグラデーション遮蔽 */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#10141c] via-transparent to-black/20" />
