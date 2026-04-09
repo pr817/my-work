@@ -103,7 +103,7 @@ export default function CategoryDetailPage() {
 
   /**
    * 2. スライドショー制御
-   * カテゴリ切り替え時にランダムな画像から開始し、6秒ごとにループ
+   * カテゴリ切り替え時にランダムな画像から開始し、5秒ごとにループ
    */
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * data.images.length);
@@ -118,7 +118,7 @@ export default function CategoryDetailPage() {
         setCurrentImageIndex(next);
         setNextImageIndex(null);
       }, 500);
-    }, 6000);
+    }, 5000); // 5秒間隔に変更
 
     return () => clearInterval(slideInterval);
   }, [activeCategory, data.images.length, currentImageIndex]);
@@ -162,10 +162,10 @@ export default function CategoryDetailPage() {
             opacity = 1;
           } else if (isActive && nextImageIndex !== null) {
             // クロスフェード中：現在の画像をフェードアウト
-            opacity = 0;
+            opacity = 0.5;
           } else if (isNext) {
             // クロスフェード中：次の画像をフェードイン
-            opacity = 1;
+            opacity = 0.5;
           }
 
           return (
