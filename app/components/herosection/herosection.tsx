@@ -45,7 +45,7 @@ export default function HeroSection() {
   useEffect(() => {
     const loadedTimer = window.setTimeout(() => {
       setIsHeroLoaded(true);
-    }, 0);
+    }, 300); // 少し遅延を追加してフェードイン効果を明確に
     const fadeTimer = window.setTimeout(() => {
       setIsColorFading(true);
     }, 2000);
@@ -126,8 +126,12 @@ export default function HeroSection() {
                 className={`absolute bottom-8 left-0 w-full text-center transition-all duration-500 delay-100 ${
                   isAnyExpanded
                     ? "translate-y-4 opacity-0"
-                    : "translate-y-0 opacity-100"
+                    : "translate-y-0"
                 }`}
+                style={{
+                  opacity: isHeroLoaded && !isAnyExpanded ? 1 : 0,
+                  transition: 'opacity 1s ease-out, transform 0.5s ease-out',
+                }}
               >
                 <span
                   className={`font-bold tracking-[0.3em] text-[#fffffb] transition-all duration-500 ${
