@@ -102,7 +102,7 @@ export default function CategoryDetailPage() {
 
   /**
    * 2. スライドショー制御
-   * カテゴリ切り替え時にランダムな画像から開始し、5秒ごとにループ
+   * カテゴリ切り替え時にランダムな画像から開始し、6秒ごとにループ
    */
   useEffect(() => {
     const randomIndex = Math.floor(Math.random() * data.images.length);
@@ -110,7 +110,7 @@ export default function CategoryDetailPage() {
 
     const slideInterval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % data.images.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(slideInterval);
   }, [activeCategory, data.images.length]);
@@ -146,7 +146,7 @@ export default function CategoryDetailPage() {
         {data.images.map((imgUrl, index) => (
           <div
             key={imgUrl}
-            className={`absolute inset-0 transition-opacity duration-1500 ease-in-out ${
+            className={`absolute inset-0 transition-opacity duration-500 ease-out ${
               index === currentImageIndex
                 ? "opacity-100 scale-105"
                 : "opacity-0 scale-100"
