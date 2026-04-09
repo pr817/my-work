@@ -154,7 +154,7 @@ export default function CategoryDetailPage() {
         {data.images.map((imgUrl, index) => {
           const isActive = index === currentImageIndex;
           const isNext = index === nextImageIndex;
-          
+
           // クロスフェードの計算
           let opacity = 0;
           if (isActive && nextImageIndex === null) {
@@ -167,16 +167,16 @@ export default function CategoryDetailPage() {
             // クロスフェード中：次の画像をフェードイン
             opacity = 1;
           }
-          
+
           return (
             <div
               key={imgUrl}
               className={`absolute inset-0 transition-opacity duration-500 ease-out ${
-                isActive ? 'scale-105' : 'scale-100'
+                isActive ? "scale-105" : "scale-100"
               }`}
               style={{
                 opacity: opacity,
-                zIndex: isActive ? 10 : (isNext ? 5 : 0),
+                zIndex: isActive ? 10 : isNext ? 5 : 0,
               }}
             >
               <img
