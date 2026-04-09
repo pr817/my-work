@@ -2,18 +2,19 @@
 
 import { useEffect, useState } from "react";
 // Lucide-reactから必要なアイコンをインポート
-import { ChevronRight, Info, FileText, Calendar, Users } from "lucide-react";
-
-// ▼ ご自身のHeaderコンポーネントのパスに合わせて調整してください ▼
-// 例: import Header from "@/components/Header";
-// ※ ここでは一般的なNext.jsのエイリアス設定を想定しています。
+import {
+  ChevronRight,
+  Info,
+  FileText,
+  Calendar,
+  Users,
+  Menu,
+  X,
+} from "lucide-react";
 import Header from "app/components/ui/Header/Header";
 import Sidebar from "app/components/sidebar/sidebar";
+import Tachiai1 from "public/DSC03362.jpg";
 
-/**
- * 各カテゴリ（演武・立合い・大会）のデータ定義
- * 実際には外部のJSONファイルなどに切り出しても管理しやすいです。
- */
 const CATEGORY_DATA = {
   enbu: {
     id: "enbu",
@@ -40,10 +41,7 @@ const CATEGORY_DATA = {
       "防具を着用し、実戦形式で技の攻防を競い合います。日々の修練で培った技術と精神力を、予測不能な状況下でいかに発揮できるかが試されます。",
     forBeginners:
       "単なる喧嘩ではなく、厳格なルールの下で行われる「安全な実戦」です。相手の動きを読み、一瞬の隙を突くスピード感が見どころです。",
-    images: [
-      "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?auto=format&fit=crop&q=80&w=1920",
-      "https://images.unsplash.com/photo-1552072092-2f9b14016940?auto=format&fit=crop&q=80&w=1920",
-    ],
+    images: [Tachiai1],
     links: [
       { label: "立合い評価基準の改定について", icon: Info },
       { label: "防具の着用規定・認可リスト", icon: FileText },
@@ -73,13 +71,10 @@ type CategoryKey = keyof typeof CATEGORY_DATA;
 export default function CategoryDetailPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("tachiai");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [nextImageIndex, setNextImageIndex] = useState<number | null>(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
-  // Header用の関数（必要に応じて中身を実装してください）
 
   /**
    * 1. URLのハッシュ変更を監視し、表示カテゴリを切り替える
@@ -106,22 +101,17 @@ export default function CategoryDetailPage() {
    * カテゴリ切り替え時にランダムな画像から開始し、5秒ごとにループ
    */
   useEffect(() => {
+    // カテゴリが変わったらランダムな画像から開始
     const randomIndex = Math.floor(Math.random() * data.images.length);
     setCurrentImageIndex(randomIndex);
 
     const slideInterval = setInterval(() => {
-      const next = (currentImageIndex + 1) % data.images.length;
-      // 次の画像を設定してクロスフェード開始
-      setNextImageIndex(next);
-      // クロスフェード時間（500ms）後に現在の画像を更新
-      setTimeout(() => {
-        setCurrentImageIndex(next);
-        setNextImageIndex(null);
-      }, 500);
-    }, 5000); // 5秒間隔に変更
+      // シンプルに現在のインデックスを+1してループさせるだけ
+      setCurrentImageIndex((prev) => (prev + 1) % data.images.length);
+    }, 5000); // 5秒間隔
 
     return () => clearInterval(slideInterval);
-  }, [activeCategory, data.images.length, currentImageIndex]);
+  }, [activeCategory, data.images.length]);
 
   /**
    * 3. カルーセルをクリックした時の処理
@@ -135,7 +125,6 @@ export default function CategoryDetailPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // 表示順の計算（アクティブなものを常に0番目=左端に）
   const categoryKeys: CategoryKey[] = ["enbu", "tachiai", "taikai"];
   const orderedKeys = [
     activeCategory,
@@ -143,57 +132,46 @@ export default function CategoryDetailPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#10141c]  selection:bg-[#d4af37] selection:text-white">
+    <div className="min-h-screen bg-[#10141c] selection:bg-[#d4af37] selection:text-white">
       {/* 共通ヘッダー */}
       <Header toggleSidebar={toggleSidebar} />
-      　　　　　　
+
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+
       {/* スライドショーセクション */}
       <section className="relative h-[60vh] w-full overflow-hidden md:h-[75vh]">
         {/* スライド画像 */}
         {data.images.map((imgUrl, index) => {
+          // 現在のインデックスと一致するかどうかを判定
           const isActive = index === currentImageIndex;
-          const isNext = index === nextImageIndex;
-
-          // クロスフェードの計算
-          let opacity = 0;
-          if (isActive && nextImageIndex === null) {
-            // 通常時：アクティブな画像を表示
-            opacity = 1;
-          } else if (isActive && nextImageIndex !== null) {
-            // クロスフェード中：現在の画像をフェードアウト
-            opacity = 0.5;
-          } else if (isNext) {
-            // クロスフェード中：次の画像をフェードイン
-            opacity = 0.5;
-          }
 
           return (
             <div
               key={imgUrl}
-              className={`absolute inset-0 transition-opacity duration-500 ease-out ${
-                isActive ? "scale-105" : "scale-100"
+              // ここがクロスフェードのキモです。
+              // duration-1000 で1秒かけてフワッと透明度が変わります。
+              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                isActive ? "opacity-100 z-10" : "opacity-0 z-0"
               }`}
-              style={{
-                opacity: opacity,
-                zIndex: isActive ? 10 : isNext ? 5 : 0,
-              }}
             >
+              {/* オプション：画像自体がゆっくり拡大するエフェクト（Ken Burns効果）を併用するとよりリッチになります */}
               <img
                 src={imgUrl}
                 alt={`${data.title}イメージ`}
-                className="h-full w-full object-cover transition-transform duration-[10000ms] ease-linear transform scale-110"
+                className={`h-full w-full object-cover transition-transform duration-[10000ms] ease-linear ${
+                  isActive ? "scale-110" : "scale-100"
+                }`}
               />
             </div>
           );
         })}
 
         {/* 下部へのグラデーション遮蔽 */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#10141c] via-transparent to-black/20" />
+        <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#10141c] via-transparent to-black/20" />
 
         {/* カルーセル式タイトルナビゲーション */}
         <div
-          className={`absolute bottom-0 left-0 w-full p-6 md:p-16 z-20 text-[#fffffb]/80 transition-all duration-1000 delay-300 ${
+          className={`absolute bottom-0 left-0 w-full p-6 md:p-16 z-20 transition-all duration-1000 delay-300 ${
             isPageLoaded
               ? "translate-y-0 opacity-100"
               : "translate-y-10 opacity-0"
@@ -205,15 +183,14 @@ export default function CategoryDetailPage() {
               const orderedIndex = orderedKeys.indexOf(key);
               const isActive = orderedIndex === 0;
 
-              // 位置・サイズの算出
-              let posStyle = "";
+              let transformStyle = "";
               if (orderedIndex === 0) {
-                posStyle = "left-0 scale-100 opacity-100 z-10";
+                transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
-                posStyle =
+                transformStyle =
                   "left-[45%] md:left-[350px] lg:left-[450px] scale-50 opacity-40 hover:opacity-100 z-0 cursor-pointer";
               } else {
-                posStyle =
+                transformStyle =
                   "left-[75%] md:left-[550px] lg:left-[700px] scale-50 opacity-40 hover:opacity-100 z-0 cursor-pointer";
               }
 
@@ -222,14 +199,14 @@ export default function CategoryDetailPage() {
                   key={key}
                   href={`#${key}`}
                   onClick={(e) => handleCategoryClick(e, key)}
-                  className={`absolute bottom-0 origin-bottom-left flex flex-col items-start transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] whitespace-nowrap ${posStyle}`}
+                  className={`absolute bottom-0 origin-bottom-left flex flex-col items-start transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] whitespace-nowrap ${transformStyle}`}
                 >
                   <p
-                    className={`mb-1 text-sm font-bold tracking-[0.4em] transition-colors ${isActive ? "text-[#d4af37]" : "text-[#fffffb]/50"}`}
+                    className={`mb-1 text-sm font-bold tracking-[0.5em] uppercase transition-colors duration-500 ${isActive ? "text-[#d4af37]" : "text-white/40"}`}
                   >
                     {cat.subtitle}
                   </p>
-                  <h1 className="text-5xl md:text-8xl font-black tracking-widest drop-shadow-2xl">
+                  <h1 className="text-6xl md:text-9xl font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]">
                     {cat.title}
                   </h1>
                 </a>
@@ -238,69 +215,68 @@ export default function CategoryDetailPage() {
           </div>
         </div>
       </section>
-      {/* 詳細情報セクション */}
-      <section className="mx-auto max-w-6xl px-6 py-20 md:px-12">
+
+      <main className="mx-auto max-w-7xl px-6 py-24 md:px-12 text-[#fffffb]">
         <div
-          className={`grid gap-16 md:grid-cols-2 text-[#fffffb] transition-all duration-1000 delay-500 ${
-            isPageLoaded
-              ? "translate-y-0 opacity-100"
-              : "translate-y-10 opacity-0"
-          }`}
+          className={`grid gap-20 lg:grid-cols-2 transition-all duration-1000 delay-500 ${isPageLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}
         >
-          {/* 概要 (左側) */}
-          <div className="space-y-10">
+          <div className="space-y-12">
             <div>
-              <h2 className="mb-6 inline-block text-2xl text-[#fffffb] font-bold tracking-widest border-b-2 border-[#d4af37] pb-2">
-                {data.title}について
+              <h2 className="mb-8 inline-block text-2xl font-bold tracking-[0.2em] border-b-4 border-[#d4af37] pb-3">
+                {data.title}の詳細
               </h2>
-              <p className="text-lg leading-loose text-[#fffffb]/80">
+              <p className="text-xl leading-relaxed text-[#fffffb]/80 font-medium">
                 {data.description}
               </p>
             </div>
-            <div className="rounded-2xl bg-[#181b26] p-8 border border-[#394155]/50 shadow-xl">
-              <div className="flex items-center gap-3 mb-4 text-[#d4af37]">
-                <Info size={24} />
-                <h3 className="text-xl font-bold">はじめて見る方へ</h3>
+            <div className="rounded-3xl bg-[#181b26] p-10 border border-white/5 shadow-2xl relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#d4af37]/5 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110" />
+              <div className="flex items-center gap-4 mb-6 text-[#d4af37]">
+                <Info size={28} />
+                <h3 className="text-2xl font-bold tracking-wider">
+                  見どころガイド
+                </h3>
               </div>
-              <p className="leading-relaxed text-[#fffffb]/70">
+              <p className="text-lg leading-loose text-[#fffffb]/70">
                 {data.forBeginners}
               </p>
             </div>
           </div>
 
-          {/* 実務・既存向けリンク (右側) */}
-          <div className="space-y-8">
-            <h2 className="text-2xl text-[#fffffb]/80 font-bold tracking-widest border-b border-[#394155] pb-2">
-              関連ドキュメント
+          <div className="space-y-10">
+            <h2 className="text-2xl font-bold tracking-[0.2em] border-b border-[#394155] pb-3 text-[#fffffb]/80">
+              関連リソース
             </h2>
-            <div className="space-y-4">
+            <div className="grid gap-4">
               {data.links.map((link, idx) => (
                 <a
                   key={idx}
                   href="#"
-                  className="group flex items-center justify-between rounded-xl bg-[#181b26] p-5 transition-all hover:bg-[#394155] hover:translate-x-1"
+                  className="group flex items-center justify-between rounded-2xl bg-white/5 p-6 transition-all hover:bg-white/10 hover:translate-x-2 border border-transparent hover:border-white/10"
                 >
-                  <div className="flex items-center gap-4">
-                    <div className="rounded-lg bg-[#d4af37]/10 p-2 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white transition-colors">
-                      <link.icon size={22} />
+                  <div className="flex items-center gap-5">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white transition-all">
+                      <link.icon size={24} />
                     </div>
-                    <span className="text-lg font-medium text-[#fffffb]">
+                    <span className="text-xl font-semibold tracking-wide transition-colors group-hover:text-[#d4af37] text-[#fffffb]">
                       {link.label}
                     </span>
                   </div>
                   <ChevronRight
-                    size={20}
-                    className=" text-[#fffffb]/80 group-hover:text-[#fffffb] transition-colors"
+                    size={24}
+                    className="text-white/20 group-hover:text-white transition-colors"
                   />
                 </a>
               ))}
             </div>
-            <div className="mt-12 rounded-lg border-l-4 border-[#394155] bg-white/5 p-4 text-sm text-[#fffffb]/40 italic">
-              ※各大学の担当者は定期的に最新の配布資料を確認してください。
+            <div className="mt-16 p-6 rounded-xl bg-gradient-to-br from-[#181b26] to-transparent border-l-2 border-[#d4af37]/50">
+              <p className="text-sm text-[#fffffb]/50 leading-relaxed">
+                ※このページの情報は現役の学生連盟会員および新入生向けに最適化されています。大会への一般参観については「お知らせ」ページをご確認ください。
+              </p>
             </div>
           </div>
         </div>
-      </section>
+      </main>
     </div>
   );
 }
