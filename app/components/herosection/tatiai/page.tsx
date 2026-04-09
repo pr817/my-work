@@ -24,10 +24,7 @@ const CATEGORY_DATA = {
       "少林寺拳法の技術を二人一組、あるいは単独で構成し表現します。技の正確さ、気迫、そして相手との調和が評価される、芸術性と武道性が融合した競技です。",
     forBeginners:
       "初めての方は、息の合った迫力ある演武の「美しさ」と「力強さ」に注目してみてください。相手を倒すのではなく、共に高め合う精神が表れています。",
-    images: [
-      "https://images.unsplash.com/photo-1555597673-b21d5c935865?auto=format&fit=crop&q=80&w=1920",
-      "https://images.unsplash.com/photo-1582266255745-9e509426a5a3?auto=format&fit=crop&q=80&w=1920",
-    ],
+    images: ["/DSC04783.jpg", "/DSC04980.jpg", "/DSC05014.jpg", "/DSC5101.jpg"],
     links: [
       { label: "最新の演武構成ルール", icon: FileText },
       { label: "過去の最優秀演武動画", icon: ChevronRight },
@@ -41,7 +38,7 @@ const CATEGORY_DATA = {
       "防具を着用し、実戦形式で技の攻防を競い合います。日々の修練で培った技術と精神力を、予測不能な状況下でいかに発揮できるかが試されます。",
     forBeginners:
       "単なる喧嘩ではなく、厳格なルールの下で行われる「安全な実戦」です。相手の動きを読み、一瞬の隙を突くスピード感が見どころです。",
-    images: ["/DSC03362.jpg"],
+    images: ["/DSC03362.jpg", "/DSC03443.jpg", "/DSC03512.jpg"],
     links: [
       { label: "立合い評価基準の改定について", icon: Info },
       { label: "防具の着用規定・認可リスト", icon: FileText },
