@@ -135,7 +135,7 @@ export default function CategoryDetailPage() {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       {/* スライドショーセクション */}
-      <section className="relative h-[60vh] w-full overflow-hidden md:h-[75vh] pt-20">
+      <section className="relative h-[65vh] w-full overflow-hidden md:h-[80vh] pt-24">
         {/* スライド画像 */}
         {data.images.map((imgUrl, index) => {
           // 現在のインデックスと一致するかどうかを判定
