@@ -148,11 +148,13 @@ export default function CategoryDetailPage() {
           return (
             <div
               key={imgUrl}
-              // ここがクロスフェードのキモです。
-              // duration-1000 で1秒かけてフワッと透明度が変わります。
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
-                isActive ? "opacity-100 z-10" : "opacity-0 z-0"
+              // opacityのみをトランジション対象にし、z-indexは即時変更
+              className={`absolute inset-0 transition-opacity duration-500 ease-out ${
+                isActive ? "opacity-100" : "opacity-0"
               }`}
+              style={{
+                zIndex: isActive ? 10 : 0,
+              }}
             >
               {/* オプション：画像自体がゆっくり拡大するエフェクト（Ken Burns効果）を併用するとよりリッチになります */}
               <img
