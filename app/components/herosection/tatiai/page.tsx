@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import Header from "app/components/ui/Header/Header";
 import Sidebar from "app/components/sidebar/sidebar";
-import Tachiai1 from "public/DSC03362.jpg";
+// import Tachiai1 from "public/DSC03362.jpg";
 
 const CATEGORY_DATA = {
   enbu: {
@@ -41,7 +41,7 @@ const CATEGORY_DATA = {
       "防具を着用し、実戦形式で技の攻防を競い合います。日々の修練で培った技術と精神力を、予測不能な状況下でいかに発揮できるかが試されます。",
     forBeginners:
       "単なる喧嘩ではなく、厳格なルールの下で行われる「安全な実戦」です。相手の動きを読み、一瞬の隙を突くスピード感が見どころです。",
-    images: [Tachiai1],
+    images: ["/DSC03362.jpg"],
     links: [
       { label: "立合い評価基準の改定について", icon: Info },
       { label: "防具の着用規定・認可リスト", icon: FileText },
