@@ -1,18 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { X } from "lucide-react";
-
-// ▼ 注意：ご自身の環境に合わせてパスを修正してください ▼
-// 例: import PlaceholderVisual from "@/components/ui/PlaceholderVisual";
-import PlaceholderVisual from "app/components/ui/PlaceholderVisual/PlaceholderVisual";
 
 type HeroPanel = {
   id: number;
   label: string;
   tone: string;
   linkPath: string; // タッチした際の遷移先URL用
+  imageUrl: string; // 画像URL用
 };
 
 const heroPanels: HeroPanel[] = [
@@ -21,18 +17,21 @@ const heroPanels: HeroPanel[] = [
     label: "演武",
     tone: "from-[#394155] via-[#242a38] to-[#10141c]",
     linkPath: "/components/herosection/enbu",
+    imageUrl: "/DSC05101.jpg",
   },
   {
     id: 1,
     label: "立合い",
     tone: "from-[#d0ae68] via-[#8f6a2f] to-[#4f3513]",
     linkPath: "/components/herosection/tatiai/",
+    imageUrl: "/DSC03362.jpg",
   },
   {
     id: 2,
     label: "大会",
     tone: "from-[#efe7d7] via-[#d6be95] to-[#b28c54]",
     linkPath: "/components/herosection/taikai",
+    imageUrl: "/DSC04707.jpg",
   },
 ];
 
@@ -77,9 +76,9 @@ export default function HeroSection() {
           }
 
           return (
-            <Link
+            <a
               key={panel.id}
-              href={isInteractive ? panel.linkPath : "#"} // インタラクティブになるまではリンク無効
+              href={isInteractive ? panel.linkPath : "#"}
               className={`relative h-full overflow-hidden border-r border-[#181b26]/50 transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] last:border-0 ${flexClass} ${
                 isInteractive ? "cursor-pointer" : "cursor-default"
               }`}
@@ -90,9 +89,7 @@ export default function HeroSection() {
                 isInteractive && !isAnyExpanded && setHoveredPanel(null)
               }
             >
-              {/* 背景画像の代わりとなるコンポーネント（実際にはここに <Image> 等が入ります） */}
-              <PlaceholderVisual
-                tone={panel.tone}
+              <div
                 className={`absolute inset-0 h-full w-full transition-all duration-[1500ms] ${
                   !isColorFading || isHovered || isExpanded
                     ? "scale-105 grayscale-0"
@@ -104,7 +101,19 @@ export default function HeroSection() {
                       ? "opacity-90"
                       : "opacity-60"
                 }`}
-              />
+              >
+                {/* 背景となる写真 */}
+                <img
+                  src={panel.imageUrl}
+                  alt={panel.label}
+                  className="h-full w-full object-cover"
+                />
+                {/* 写真の上に元のトーン（グラデーション）を半透明で重ねて深みを出す */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${panel.tone} opacity-60 mix-blend-multiply`}
+                />
+              </div>
+
               <div
                 className={`absolute inset-0 transition-opacity duration-700 ${
                   isExpanded
@@ -135,7 +144,7 @@ export default function HeroSection() {
                 <div
                   className="absolute top-8 right-8 z-30 rounded-full bg-black/50 p-2 text-white shadow-lg transition hover:bg-black/80"
                   onClick={(event) => {
-                    event.preventDefault(); // 親のLinkタグの遷移を防ぐ
+                    event.preventDefault();
                     event.stopPropagation();
                     setExpandedPanel(null);
                   }}
@@ -143,7 +152,7 @@ export default function HeroSection() {
                   <X size={28} />
                 </div>
               )}
-            </Link>
+            </a>
           );
         })}
       </div>
