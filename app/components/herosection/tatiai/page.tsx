@@ -73,7 +73,7 @@ type CategoryKey = keyof typeof CATEGORY_DATA;
 export default function CategoryDetailPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("tachiai");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isFadingOut, setIsFadingOut] = useState(false);
+  const [nextImageIndex, setNextImageIndex] = useState<number | null>(null);
   const [isPageLoaded, setIsPageLoaded] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -110,17 +110,18 @@ export default function CategoryDetailPage() {
     setCurrentImageIndex(randomIndex);
 
     const slideInterval = setInterval(() => {
-      // まずフェードアウトを開始
-      setIsFadingOut(true);
-      // フェードアウトが完了したら画像を切り替えてフェードイン
+      const next = (currentImageIndex + 1) % data.images.length;
+      // 次の画像を設定してクロスフェード開始
+      setNextImageIndex(next);
+      // クロスフェード時間（500ms）後に現在の画像を更新
       setTimeout(() => {
-        setCurrentImageIndex((prev) => (prev + 1) % data.images.length);
-        setIsFadingOut(false);
-      }, 400); // フェードアウトの時間
+        setCurrentImageIndex(next);
+        setNextImageIndex(null);
+      }, 500);
     }, 6000);
 
     return () => clearInterval(slideInterval);
-  }, [activeCategory, data.images.length]);
+  }, [activeCategory, data.images.length, currentImageIndex]);
 
   /**
    * 3. カルーセルをクリックした時の処理
@@ -152,17 +153,30 @@ export default function CategoryDetailPage() {
         {/* スライド画像 */}
         {data.images.map((imgUrl, index) => {
           const isActive = index === currentImageIndex;
-          // フェードアウト中で、かつ現在アクティブな画像の場合、opacityを0に近づける
-          const opacity = isFadingOut && isActive ? 0 : (isActive ? 1 : 0);
+          const isNext = index === nextImageIndex;
+          
+          // クロスフェードの計算
+          let opacity = 0;
+          if (isActive && nextImageIndex === null) {
+            // 通常時：アクティブな画像を表示
+            opacity = 1;
+          } else if (isActive && nextImageIndex !== null) {
+            // クロスフェード中：現在の画像をフェードアウト
+            opacity = 0;
+          } else if (isNext) {
+            // クロスフェード中：次の画像をフェードイン
+            opacity = 1;
+          }
+          
           return (
             <div
               key={imgUrl}
-              className={`absolute inset-0 transition-opacity duration-400 ease-out ${
+              className={`absolute inset-0 transition-opacity duration-500 ease-out ${
                 isActive ? 'scale-105' : 'scale-100'
               }`}
               style={{
                 opacity: opacity,
-                transitionDuration: '400ms',
+                zIndex: isActive ? 10 : (isNext ? 5 : 0),
               }}
             >
               <img
