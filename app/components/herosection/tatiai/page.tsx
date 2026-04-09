@@ -165,7 +165,7 @@ export default function CategoryDetailPage() {
 
         {/* カルーセル式タイトルナビゲーション */}
         <div
-          className={`absolute bottom-0 left-0 w-full p-6 md:p-16 z-20 transition-all duration-1000 delay-300 ${
+          className={`absolute bottom-0 left-0 w-full p-6 md:p-16 z-20 text-[#fffffb]/80 transition-all duration-1000 delay-300 ${
             isPageLoaded
               ? "translate-y-0 opacity-100"
               : "translate-y-10 opacity-0"
@@ -213,7 +213,7 @@ export default function CategoryDetailPage() {
       {/* 詳細情報セクション */}
       <section className="mx-auto max-w-6xl px-6 py-20 md:px-12">
         <div
-          className={`grid gap-16 md:grid-cols-2 transition-all duration-1000 delay-500 ${
+          className={`grid gap-16 md:grid-cols-2 text-[#fffffb] transition-all duration-1000 delay-500 ${
             isPageLoaded
               ? "translate-y-0 opacity-100"
               : "translate-y-10 opacity-0"
@@ -222,7 +222,7 @@ export default function CategoryDetailPage() {
           {/* 概要 (左側) */}
           <div className="space-y-10">
             <div>
-              <h2 className="mb-6 inline-block text-2xl font-bold tracking-widest border-b-2 border-[#d4af37] pb-2">
+              <h2 className="mb-6 inline-block text-2xl text-[#fffffb] font-bold tracking-widest border-b-2 border-[#d4af37] pb-2">
                 {data.title}について
               </h2>
               <p className="text-lg leading-loose text-[#fffffb]/80">
@@ -256,7 +256,9 @@ export default function CategoryDetailPage() {
                     <div className="rounded-lg bg-[#d4af37]/10 p-2 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white transition-colors">
                       <link.icon size={22} />
                     </div>
-                    <span className="text-lg font-medium text-[#fffffb]">{link.label}</span>
+                    <span className="text-lg font-medium text-[#fffffb]">
+                      {link.label}
+                    </span>
                   </div>
                   <ChevronRight
                     size={20}
