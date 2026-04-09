@@ -197,7 +197,7 @@ export default function CategoryDetailPage() {
                   className={`absolute bottom-0 origin-bottom-left flex flex-col items-start transition-all duration-1000 ease-[cubic-bezier(0.23,1,0.32,1)] whitespace-nowrap ${posStyle}`}
                 >
                   <p
-                    className={`mb-1 text-sm font-bold tracking-[0.4em] transition-colors ${isActive ? "text-[#d4af37]" : "text-white/50"}`}
+                    className={`mb-1 text-sm font-bold tracking-[0.4em] transition-colors ${isActive ? "text-[#d4af37]" : "text-[#fffffb]/50"}`}
                   >
                     {cat.subtitle}
                   </p>
@@ -256,11 +256,11 @@ export default function CategoryDetailPage() {
                     <div className="rounded-lg bg-[#d4af37]/10 p-2 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white transition-colors">
                       <link.icon size={22} />
                     </div>
-                    <span className="text-lg font-medium">{link.label}</span>
+                    <span className="text-lg font-medium text-[#fffffb]">{link.label}</span>
                   </div>
                   <ChevronRight
                     size={20}
-                    className=" text-[#fffffb]/80 group-hover:text-white transition-colors"
+                    className=" text-[#fffffb]/80 group-hover:text-[#fffffb] transition-colors"
                   />
                 </a>
               ))}
