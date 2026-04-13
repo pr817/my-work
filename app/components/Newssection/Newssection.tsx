@@ -4,7 +4,7 @@
 import { useState, type ReactNode, useMemo } from "react";
 import { ArrowRight } from "lucide-react";
 // さっき作ったデータと型をインポート
-import { newsData, type NewsCategory } from "app/components/newsDate/newdate";
+import { newsData, type NewsCategory } from "app/components/newsDate/newDate";
 
 // このファイルの中だけで使う小さなボタンコンポーネント
 function TabButton({
