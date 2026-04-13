@@ -1,9 +1,9 @@
 // src/components/NewsSection.tsx
 "use client";
 
-import { useState, type ReactNode, useMemo } from "react";
+import { useState, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
-// app/components/newsDate/newdate.ts からデータと型をインポート
+// さっき作ったデータと型をインポート
 import { newsData, type NewsCategory } from "app/components/newsDate/newdate";
 
 // このファイルの中だけで使う小さなボタンコンポーネント
@@ -31,34 +31,9 @@ function TabButton({
   );
 }
 
-// 日付文字列 "YYYY.MM.DD" を Date オブジェクトに変換するヘルパー
-function parseDate(dateStr: string): Date {
-  const [year, month, day] = dateStr.split(".").map(Number);
-  return new Date(year, month - 1, day); // month は 0-indexed
-}
-
 // これがメインのコンポーネント！外部から使えるようにexport defaultする
 function NewsSection() {
   const [activeTab, setActiveTab] = useState<NewsCategory>("all");
-
-  // 表示するニュースをフィルタリング、ソート、スライス
-  const displayedNews = useMemo(() => {
-    // 1. フィルタリング
-    const filtered = newsData.filter(
-      (news) => activeTab === "all" || news.category === activeTab,
-    );
-
-    // 2. 日付でソート（新しい順）
-    const sorted = [...filtered].sort((a, b) => {
-      const dateA = parseDate(a.date);
-      const dateB = parseDate(b.date);
-      return dateB.getTime() - dateA.getTime(); // 降順
-    });
-
-    // 3. 表示数を制限
-    const limit = activeTab === "all" ? 5 : 3;
-    return sorted.slice(0, limit);
-  }, [activeTab]);
 
   return (
     <section className="bg-[#333333]/5 px-4 py-20 sm:px-6 lg:px-8">
@@ -104,25 +79,29 @@ function NewsSection() {
         </div>
 
         <div className="flex flex-col gap-4">
-          {displayedNews.map((news) => (
-            <a
-              href={news.path}
-              key={news.id}
-              className="group flex cursor-pointer flex-col gap-4 rounded-2xl border border-[#333333]/5 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:flex-row md:items-center"
-            >
-              <div className="flex shrink-0 items-center gap-4 md:w-48">
-                <span className="text-sm font-medium text-[#333333]/60">
-                  {news.date}
-                </span>
-                <span className="rounded-full bg-[#333333]/5 px-3 py-1 text-xs font-bold text-[#333333]/80 transition-colors group-hover:bg-[#d4af37]/10 group-hover:text-[#d4af37]">
-                  {news.tag}
-                </span>
-              </div>
-              <h3 className="line-clamp-2 flex-1 font-medium text-[#333333] transition-colors group-hover:text-[#d4af37]">
-                {news.title}
-              </h3>
-            </a>
-          ))}
+          {newsData
+            .filter(
+              (news) => activeTab === "all" || news.category === activeTab,
+            )
+            .map((news) => (
+              <a
+                href={news.path}
+                key={news.id}
+                className="group flex cursor-pointer flex-col gap-4 rounded-2xl border border-[#333333]/5 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md md:flex-row md:items-center"
+              >
+                <div className="flex shrink-0 items-center gap-4 md:w-48">
+                  <span className="text-sm font-medium text-[#333333]/60">
+                    {news.date}
+                  </span>
+                  <span className="rounded-full bg-[#333333]/5 px-3 py-1 text-xs font-bold text-[#333333]/80 transition-colors group-hover:bg-[#d4af37]/10 group-hover:text-[#d4af37]">
+                    {news.tag}
+                  </span>
+                </div>
+                <h3 className="line-clamp-2 flex-1 font-medium text-[#333333] transition-colors group-hover:text-[#d4af37]">
+                  {news.title}
+                </h3>
+              </a>
+            ))}
         </div>
 
         <a
