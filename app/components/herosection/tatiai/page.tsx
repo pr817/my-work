@@ -38,7 +38,9 @@ const CATEGORY_DATA = {
     forBeginners:
       "単なる喧嘩ではなく、厳格なルールの下で行われる「安全な実戦」です。相手の動きを読み、一瞬の隙を突くスピード感が見どころです。",
     images: ["/DSC03362.jpg", "/DSC03443.jpg", "/DSC03512.jpg"],
-    links: [{ label: "防具の着用規定・認可リスト", icon: FileText, disabled: false }],
+    links: [
+      { label: "防具の着用規定・認可リスト", icon: FileText, disabled: false },
+    ],
   },
   taikai: {
     id: "taikai",
@@ -56,7 +58,11 @@ const CATEGORY_DATA = {
       "/IMG_3606.jpg",
     ],
     links: [
-      { label: "次期大会のエントリーフォーム", icon: Calendar, disabled: false },
+      {
+        label: "次期大会のエントリーフォーム",
+        icon: Calendar,
+        disabled: false,
+      },
       { label: "参加大学一覧・座席表", icon: Users, disabled: false },
     ],
   },
@@ -135,7 +141,7 @@ export default function CategoryDetailPage() {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       {/* スライドショーセクション */}
-      <section className="relative h-[65vh] w-full overflow-hidden md:h-[80vh] pt-24">
+      <section className="relative h-[60vh] w-full overflow-hidden md:h-[75vh] pt-24">
         {/* スライド画像 */}
         {data.images.map((imgUrl, index) => {
           // 現在のインデックスと一致するかどうかを判定
@@ -248,7 +254,7 @@ export default function CategoryDetailPage() {
             <div className="grid gap-4">
               {data.links.map((link, idx) => {
                 const isDisabled = link.disabled === true;
-                const LinkWrapper = isDisabled ? 'div' : 'a';
+                const LinkWrapper = isDisabled ? "div" : "a";
                 return (
                   <LinkWrapper
                     key={idx}
@@ -261,19 +267,23 @@ export default function CategoryDetailPage() {
                     onClick={isDisabled ? (e) => e.preventDefault() : undefined}
                   >
                     <div className="flex items-center gap-5">
-                      <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${
-                        isDisabled
-                          ? "bg-[#d4af37]/5 text-[#d4af37]/50"
-                          : "bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white"
-                      } transition-all`}>
+                      <div
+                        className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                          isDisabled
+                            ? "bg-[#d4af37]/5 text-[#d4af37]/50"
+                            : "bg-[#d4af37]/10 text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-white"
+                        } transition-all`}
+                      >
                         <link.icon size={24} />
                       </div>
                       <div className="flex flex-col">
-                        <span className={`text-xl font-semibold tracking-wide ${
-                          isDisabled
-                            ? "text-[#fffffb]/60"
-                            : "text-[#fffffb] group-hover:text-[#d4af37]"
-                        } transition-colors`}>
+                        <span
+                          className={`text-xl font-semibold tracking-wide ${
+                            isDisabled
+                              ? "text-[#fffffb]/60"
+                              : "text-[#fffffb] group-hover:text-[#d4af37]"
+                          } transition-colors`}
+                        >
                           {link.label}
                         </span>
                         {isDisabled && (

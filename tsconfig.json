@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "baseUrl": ".", // 🌟 これが「基準点」として必須です！
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -15,12 +16,14 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "paths": {
-      "@/*": ["./*"]
-    }
+      // 🌟 ここに標準のショートカットも戻しておくと安心です
+      "@/components/*": ["registry/nextjs/components/*"],
+      "@/lib/*": ["registry/nextjs/lib/*"],
+    },
   },
   "include": [
     "next-env.d.ts",
@@ -28,7 +31,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }
