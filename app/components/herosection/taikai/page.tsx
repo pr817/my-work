@@ -219,7 +219,7 @@ export default function CategoryDetailPage() {
                   >
                     {cat.subtitle}
                   </p>
-                  <h1 className={`${cat.title === "立合評価法" && !isActive ? 'text-4xl md:text-7xl' : 'text-5xl md:text-8xl'} font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]`}>
+                  <h1 className={`${isActive ? 'text-5xl md:text-8xl' : 'text-3xl md:text-6xl'} font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]`}>
                     {cat.title}
                   </h1>
                 </a>
