@@ -30,8 +30,8 @@ const CATEGORY_DATA = {
     ],
   },
   tachiai: {
-    id: "tachiai",
-    title: "立合い",
+    id: "tachiaihyoukahou",
+    title: "立合評価法",
     subtitle: "TACHIAI",
     description:
       "防具を着用し、実戦形式で技の攻防を競い合います。日々の修練で培った技術と精神力を、予測不能な状況下でいかに発揮できるかが試されます。",
