@@ -8,6 +8,9 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -16,10 +19,33 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // ここでフォーム送信処理を実装します（後で設定）
-    alert("送信機能は現在準備中です。");
+    setIsLoading(true);
+    setError(null);
+    setIsSuccess(false);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("送信に失敗しました。もう一度お試しください。");
+      }
+
+      // 成功
+      setIsSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "送信に失敗しました。");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -96,10 +122,21 @@ export default function ContactPage() {
             <div className="pt-4">
               <button
                 type="submit"
-                className="w-full rounded-full bg-[#181b26] px-8 py-4 font-bold text-[#fffffb] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d4af37] hover:text-[#181b26] hover:shadow-lg active:scale-95"
+                disabled={isLoading}
+                className="w-full rounded-full bg-[#181b26] px-8 py-4 font-bold text-[#fffffb] transition-all duration-300 hover:-translate-y-1 hover:bg-[#d4af37] hover:text-[#181b26] hover:shadow-lg active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
               >
-                送信する
+                {isLoading ? "送信中..." : "送信する"}
               </button>
+              {isSuccess && (
+                <p className="mt-4 text-center text-green-600 font-medium">
+                  送信が完了しました。確認メールをお送りしました。
+                </p>
+              )}
+              {error && (
+                <p className="mt-4 text-center text-red-600 font-medium">
+                  {error}
+                </p>
+              )}
             </div>
           </form>
 
