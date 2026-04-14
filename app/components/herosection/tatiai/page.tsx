@@ -181,7 +181,7 @@ export default function CategoryDetailPage() {
               : "translate-y-10 opacity-0"
           }`}
         >
-          <div className="max-w-6xl mx-auto relative h-24 md:h-32">
+          <div className="max-w-6xl mx-auto relative h-28 md:h-36">
             {categoryKeys.map((key) => {
               const cat = CATEGORY_DATA[key];
               const orderedIndex = orderedKeys.indexOf(key);
@@ -192,10 +192,10 @@ export default function CategoryDetailPage() {
                 transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
                 transformStyle =
-                  "left-[45%] md:left-[350px] lg:left-[450px] scale-50 opacity-40 hover:opacity-100 z-0 cursor-pointer";
+                  "left-[40%] md:left-[300px] lg:left-[400px] scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer";
               } else {
                 transformStyle =
-                  "left-[75%] md:left-[550px] lg:left-[700px] scale-50 opacity-40 hover:opacity-100 z-0 cursor-pointer";
+                  "left-[70%] md:left-[500px] lg:left-[650px] scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer";
               }
 
               return (
@@ -210,7 +210,7 @@ export default function CategoryDetailPage() {
                   >
                     {cat.subtitle}
                   </p>
-                  <h1 className="text-6xl md:text-9xl font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]">
+                  <h1 className="text-5xl md:text-8xl font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]">
                     {cat.title}
                   </h1>
                 </a>
