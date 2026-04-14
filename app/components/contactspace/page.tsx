@@ -61,7 +61,7 @@ export default function ContactPage() {
   };
 
   return (
-    <section className="bg-[#fffffb] px-4 py-20 sm:px-6 lg:px-8">
+    <section className="bg-[#fffffb] px-4 pt-24 pb-20 sm:px-6 lg:px-8">
       <div className="min-h-screen bg-[#fffffb] font-sans text-[#333333]">
         <Header toggleSidebar={toggleSidebar} scrollToTop={scrollToTop} />
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
@@ -174,6 +174,10 @@ export default function ContactPage() {
               </p>
             </div>
           </div>
+
+          <footer className="mt-20 border-t border-[#333333]/20 pt-8 text-center text-[#fffffb]/60">
+            <p>© 2026 少林寺拳法学生連盟関東地区. All rights reserved.</p>
+          </footer>
         </div>
       </div>
     </section>
