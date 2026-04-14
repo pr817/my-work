@@ -28,7 +28,7 @@ export const newsData: NewsItem[] = [
     date: "2026.05.02",
     tag: "お問い合わせ",
     title: "ご意見・ご要望をお聞かせください（お問い合わせページ公開）",
-    path: "/components/contactspace",
+    path: "/contactspace",
   },
   {
     id: 3,
