@@ -191,11 +191,20 @@ export default function CategoryDetailPage() {
               if (orderedIndex === 0) {
                 transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
+                // 長いタイトル（立合評価法）の場合、左位置を広げる
+                const isLongTitle = cat.id === "tachiai";
+                const leftClass = isLongTitle
+                  ? "left-[45%] md:left-[350px] lg:left-[450px]"
+                  : "left-[40%] md:left-[300px] lg:left-[400px]";
                 transformStyle =
-                  "left-[40%] md:left-[300px] lg:left-[400px] scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer";
+                  `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
               } else {
+                const isLongTitle = cat.id === "tachiai";
+                const leftClass = isLongTitle
+                  ? "left-[75%] md:left-[550px] lg:left-[700px]"
+                  : "left-[70%] md:left-[500px] lg:left-[650px]";
                 transformStyle =
-                  "left-[70%] md:left-[500px] lg:left-[650px] scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer";
+                  `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
               }
 
               return (
