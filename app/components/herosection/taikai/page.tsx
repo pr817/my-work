@@ -191,20 +191,11 @@ export default function CategoryDetailPage() {
               if (orderedIndex === 0) {
                 transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
-                // 長いタイトル（立合評価法）の場合、左位置を調整
-                const isLongTitle = cat.title === "立合評価法";
-                const leftClass = isLongTitle
-                  ? "left-[35%] md:left-[280px] lg:left-[380px]"
-                  : "left-[40%] md:left-[300px] lg:left-[400px]";
                 transformStyle =
-                  `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
+                  "left-[30%] md:left-[250px] lg:left-[350px] scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer";
               } else {
-                const isLongTitle = cat.title === "立合評価法";
-                const leftClass = isLongTitle
-                  ? "left-[65%] md:left-[480px] lg:left-[580px]"
-                  : "left-[70%] md:left-[500px] lg:left-[650px]";
                 transformStyle =
-                  `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
+                  "left-[70%] md:left-[550px] lg:left-[650px] scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer";
               }
 
               return (
