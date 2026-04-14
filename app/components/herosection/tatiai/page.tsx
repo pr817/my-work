@@ -191,17 +191,17 @@ export default function CategoryDetailPage() {
               if (orderedIndex === 0) {
                 transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
-                // 長いタイトル（立合評価法）の場合、左位置を広げる
-                const isLongTitle = cat.id === "tachiai";
+                // 長いタイトル（立合評価法）の場合、左位置を調整
+                const isLongTitle = cat.title === "立合評価法";
                 const leftClass = isLongTitle
-                  ? "left-[45%] md:left-[350px] lg:left-[450px]"
+                  ? "left-[35%] md:left-[280px] lg:left-[380px]"
                   : "left-[40%] md:left-[300px] lg:left-[400px]";
                 transformStyle =
                   `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
               } else {
-                const isLongTitle = cat.id === "tachiai";
+                const isLongTitle = cat.title === "立合評価法";
                 const leftClass = isLongTitle
-                  ? "left-[75%] md:left-[550px] lg:left-[700px]"
+                  ? "left-[65%] md:left-[480px] lg:left-[580px]"
                   : "left-[70%] md:left-[500px] lg:left-[650px]";
                 transformStyle =
                   `${leftClass} scale-75 opacity-40 hover:opacity-100 z-0 cursor-pointer`;
@@ -219,7 +219,7 @@ export default function CategoryDetailPage() {
                   >
                     {cat.subtitle}
                   </p>
-                  <h1 className="text-5xl md:text-8xl font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]">
+                  <h1 className={`${cat.title === "立合評価法" && !isActive ? 'text-4xl md:text-7xl' : 'text-5xl md:text-8xl'} font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]`}>
                     {cat.title}
                   </h1>
                 </a>
