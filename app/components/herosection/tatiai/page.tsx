@@ -191,17 +191,17 @@ export default function CategoryDetailPage() {
               if (orderedIndex === 0) {
                 transformStyle = "left-0 scale-100 opacity-100 z-10";
               } else if (orderedIndex === 1) {
-                // アクティブカテゴリが立合評価法の場合は左に詰める
+                // アクティブカテゴリが立合評価法の場合はさらに左に詰めて重なり防止
                 const isTachiaiActive = activeCategory === "tachiai";
                 const leftClass = isTachiaiActive
-                  ? "left-[15%] md:left-[120px] lg:left-[220px]"
+                  ? "left-[10%] md:left-[60px] lg:left-[150px]"
                   : "left-[30%] md:left-[250px] lg:left-[350px]";
                 transformStyle =
                   `${leftClass} scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer`;
               } else {
                 const isTachiaiActive = activeCategory === "tachiai";
                 const leftClass = isTachiaiActive
-                  ? "left-[75%] md:left-[580px] lg:left-[720px]"
+                  ? "left-[85%] md:left-[620px] lg:left-[780px]"
                   : "left-[70%] md:left-[550px] lg:left-[650px]";
                 transformStyle =
                   `${leftClass} scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer`;
