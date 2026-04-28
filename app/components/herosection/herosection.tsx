@@ -21,7 +21,7 @@ const heroPanels: HeroPanel[] = [
   },
   {
     id: 1,
-    label: "立合い",
+    label: "立合評価法",
     tone: "from-[#d0ae68] via-[#8f6a2f] to-[#4f3513]",
     linkPath: "/components/herosection/tatiai/",
     imageUrl: "/DSC03362.jpg",
@@ -104,7 +104,8 @@ export default function HeroSection() {
               >
                 {/* 背景となる写真 */}
                 <img
-                  src={panel.imageUrl}
+                  src={panel.imageUrl:"/IMG_9523.jpg",
+                  }
                   alt={panel.label}
                   className="h-full w-full object-cover"
                 />
@@ -124,13 +125,11 @@ export default function HeroSection() {
 
               <div
                 className={`absolute bottom-8 left-0 w-full text-center transition-all duration-500 delay-100 ${
-                  isAnyExpanded
-                    ? "translate-y-4 opacity-0"
-                    : "translate-y-0"
+                  isAnyExpanded ? "translate-y-4 opacity-0" : "translate-y-0"
                 }`}
                 style={{
                   opacity: isHeroLoaded && !isAnyExpanded ? 1 : 0,
-                  transition: 'opacity 1s ease-out, transform 0.5s ease-out',
+                  transition: "opacity 1s ease-out, transform 0.5s ease-out",
                 }}
               >
                 <span
