@@ -14,12 +14,9 @@ export default function ArchivePage() {
   return (
     <>
       <Header toggleSidebar={toggleSidebar} />
-      <main className="py-30">
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
       <TaikaiSection />
-        <Footer scrollToTop={scrollToTop} />
-
-      <main/>
+      <Footer scrollToTop={scrollToTop} />
     </>
   );
 }
