@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const tournaments = [
   {
@@ -12,6 +13,7 @@ const tournaments = [
     description:
       "第63回関東学生少林寺拳法大会。各大学の代表が一堂に会し、日頃の鍛錬の成果を競います。",
     image: "/DSC04707.jpg",
+    slug: "kanto_63",
   },
 ];
 
@@ -43,9 +45,10 @@ export default function TaikaiSection() {
         {/* カード一覧 */}
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((t) => (
-            <div
+            <Link
               key={t.id}
-              className="rounded-2xl border border-[#fffffb]/20 bg-white/5 p-6 shadow-xl transition hover:scale-[1.02]"
+              href={`/about/taikai/${t.slug}`}
+              className="rounded-2xl border border-[#fffffb]/20 bg-white/5 p-6 shadow-xl transition hover:scale-[1.02] block"
             >
               <div className="relative mb-4 h-40 w-full overflow-hidden rounded-xl">
                 <Image
@@ -63,7 +66,7 @@ export default function TaikaiSection() {
               <p className="text-sm leading-relaxed text-[#fffffb]/70">
                 {t.description}
               </p>
-            </div>
+            </Link>
           ))}
         </div>
 
