@@ -47,7 +47,7 @@ export default function Kanto63Page() {
               大会結果
             </Link>
             <Link
-              href="/about/taikai/kanto_63/schedule"
+              href="/news/2"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#181b26] transition"
             >
               タイムスケジュール
