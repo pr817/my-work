@@ -4,14 +4,18 @@ import Image from "next/image";
 import Link from "next/link";
 import Header from "app/components/ui/Header/Header";
 import Footer from "app/components/ui/Footer/Footer";
+import Sidebar from "app/components/sidebar/sidebar";
+import { usestate } from "react";
 
 export default function Kanto63Page() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
   const toggleSidebar = () => {};
+  const isSidebarOpen = usestate(false);
 
   return (
     <div className="min-h-screen bg-[#181b26]">
       <Header toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       <main className="py-30">
         <div className="mx-auto max-w-4xl px-4">
