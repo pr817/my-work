@@ -1,23 +1,23 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "app/components/ui/Header/Header";
 import Footer from "app/components/ui/Footer/Footer";
 import Sidebar from "app/components/sidebar/sidebar";
-import { usestate } from "react";
 
 export default function Kanto63Page() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
-  const toggleSidebar = () => {};
-  const isSidebarOpen = usestate(false);
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   return (
     <div className="min-h-screen bg-[#181b26]">
       <Header toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <main className="py-30">
+      <main className="py-16">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="mb-6 text-center text-3xl font-bold tracking-widest text-[#fffffb]">
             第６３回関東学生大会
