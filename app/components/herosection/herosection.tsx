@@ -104,7 +104,7 @@ export default function HeroSection() {
               >
                 {/* 背景となる写真 */}
                 <img
-                  src={panel.imageUrl}
+                  src={panel.imageUrl :: "/IMG_9523.jpg",}
                   alt={panel.label}
                   className="h-full w-full object-cover"
                 />
