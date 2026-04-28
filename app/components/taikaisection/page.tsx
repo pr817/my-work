@@ -6,30 +6,12 @@ import Image from "next/image";
 const tournaments = [
   {
     id: 1,
-    title: "関東学生大会2026春",
-    date: "2026年4月",
+    title: "第６３回関東学生大会",
+    date: "2026.05.04",
     location: "日本武道館",
     description:
-      "第1回関東学生少林寺拳法大会。各大学の代表が一堂に会し、日頃の鍛錬の成果を競います。",
-    image: "/IMG_9523.jpg",
-  },
-  {
-    id: 2,
-    title: "関東学生大会2026秋",
-    date: "2026年10月",
-    location: "千葉ポートアリーナ",
-    description:
-      "秋のシーズン。新チーム体制で臨む後期大会。団体戦・個人戦ともに熱戦が期待されます。",
-    image: "/IMG_9523.jpg",
-  },
-  {
-    id: 3,
-    title: "関東新人大会2027",
-    date: "2027年1月",
-    location: "埼玉県立武道館",
-    description:
-      "1年生主体のフレッシュな大会。これからの連盟を担う若手選手たちの登竜門。",
-    image: "/IMG_9523.jpg",
+      "第63回関東学生少林寺拳法大会。各大学の代表が一堂に会し、日頃の鍛錬の成果を競います。",
+    image: "/DSC04707.jpg",
   },
 ];
 
@@ -37,7 +19,7 @@ export default function TaikaiSection() {
   const [search, setSearch] = useState("");
 
   const filtered = tournaments.filter((t) =>
-    t.title.toLowerCase().includes(search.toLowerCase())
+    t.title.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
