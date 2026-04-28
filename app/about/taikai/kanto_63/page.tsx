@@ -1,9 +1,11 @@
 import Image from "next/image";
-
+import Footer from "app/components/ui/Footer/Footer";
+import Header from "@/components/Header";
 export default function Kanto63Page() {
   return (
     <main className="min-h-screen bg-[#181b26] py-16">
       <div className="mx-auto max-w-4xl px-4">
+        <Header />
         <h1 className="mb-6 text-center text-3xl font-bold tracking-widest text-[#fffffb]">
           第６３回関東学生大会
         </h1>
