@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Header from "app/components/ui/Header/Header";
 import Footer from "app/components/ui/Footer/Footer";
 
@@ -37,6 +38,21 @@ export default function Kanto63Page() {
           <p className="mx-auto max-w-lg text-center leading-relaxed text-[#fffffb]/70">
             第63回関東学生少林寺拳法大会。各大学の代表が一堂に会し、日頃の鍛錬の成果を競います。
           </p>
+
+          <div className="mt-10 flex justify-center gap-6">
+            <Link
+              href="/about/taikai/kanto_63/result"
+              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#181b26] transition"
+            >
+              大会結果
+            </Link>
+            <Link
+              href="/about/taikai/kanto_63/schedule"
+              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#181b26] transition"
+            >
+              タイムスケジュール
+            </Link>
+          </div>
         </div>
       </main>
 
