@@ -9,9 +9,10 @@ export default function MissionSection() {
     <section className="mx-auto max-w-5xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="flex flex-col items-center gap-10 rounded-3xl border border-[#333333]/5 bg-white p-8 shadow-xl md:flex-row md:p-12">
         <div className="h-32 w-32 shrink-0 overflow-hidden rounded-full border-4 border-[#fffffb] bg-[#181b26]/5 shadow-inner md:h-48 md:w-48">
-          <PlaceholderVisual
-            tone="from-[#394155] via-[#242a38] to-[#10141c]"
-            className="h-full w-full grayscale transition-all duration-500 hover:grayscale-0"
+          <img
+            src="/IMG_9523.jpg"
+            alt="委員長写真"
+            className="h-full w-full object-cover grayscale transition-all duration-500 hover:grayscale-0"
           />
         </div>
         <div className="flex-1 text-center md:text-left">
