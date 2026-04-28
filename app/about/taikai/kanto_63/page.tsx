@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Header from "@/components/Header";
-import Footer from "@/components/ui/Footer/Footer";
+import Header from "app/components/ui/Header/Header";
+import Footer from "app/components/ui/Footer/Footer";
 
 export default function Kanto63Page() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -12,7 +12,7 @@ export default function Kanto63Page() {
     <div className="min-h-screen bg-[#181b26]">
       <Header toggleSidebar={toggleSidebar} />
 
-      <main className="py-16">
+      <main className="py-30">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="mb-6 text-center text-3xl font-bold tracking-widest text-[#fffffb]">
             第６３回関東学生大会
