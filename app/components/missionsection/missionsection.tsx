@@ -19,14 +19,29 @@ export default function MissionSection() {
           <h2 className="mb-2 text-sm font-bold tracking-widest text-[#d4af37]">
             MISSION & VISION
           </h2>
-          <h3 className="mb-6 text-2xl font-bold leading-relaxed text-[#333333] md:text-3xl">
-            自己確立と自他共楽の精神で、
-            <br className="hidden md:block" />
-            社会に貢献する人づくりを。
-          </h3>
-          <p className="mb-6 leading-relaxed text-[#333333]/80">
-            関東学生少林寺連盟は、単なる競技技術の向上にとどまらず、他大学との交流を通じた「横のつながり」、そして社会で活躍する先輩方から学ぶ「縦のつながり」を重視しています。拳禅一如の修行を通じて、時代を牽引する強くて優しいリーダーを社会へ輩出することが我々の使命です。
-          </p>
+          <div className="mb-6 space-y-6">
+            <div>
+              <h3 className="text-xl font-bold text-[#333333]">Mission</h3>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟の存在価値ー</p>
+              <p className="mt-2 leading-relaxed text-[#333333]/80">
+                関東圏内の大学少林寺拳法部を束ね、他大学同士の交流である「横のつながり」と、全大学のOBOGとの交流である「横のつながり」の双方を提供する柱となる。
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-[#333333]">Vision</h3>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟が目指す姿ー</p>
+              <p className="mt-2 leading-relaxed text-[#333333]/80">
+                出身や環境を凌駕し、さまざまな人が交流できる唯一無二の環境となり、お互いに協力しあい、時に切磋琢磨しあう、最高の居場所を創造する。
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-[#333333]">Value</h3>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟連盟の価値観ー</p>
+              <p className="mt-2 leading-relaxed text-[#333333]/80">
+                本音でぶつかり合うからこそ生まれる、大学の垣根を超えた新しい溜まり場。
+              </p>
+            </div>
+          </div>
           <div className="border-t border-[#333333]/10 pt-4 text-right">
             <p className="text-sm text-[#333333]/60">
               令和8年度 関東学生少林寺連盟 委員長
