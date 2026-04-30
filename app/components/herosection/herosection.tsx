@@ -167,7 +167,7 @@ export default function HeroSection() {
         }`}
       >
         <h1 className="mb-6 text-4xl font-bold tracking-widest text-[#fffffb] drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)] md:text-6xl lg:text-7xl">
-          少林寺を
+          少林寺拳法を
           <span className="text-[#d4af37] drop-shadow-[0_0_15px_rgba(212,175,55,0.4)]">
             世界
           </span>
