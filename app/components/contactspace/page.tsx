@@ -4,11 +4,6 @@ import { useState } from "react";
 import Header from "app/components/ui/Header/Header";
 import Sidebar from "app/components/sidebar/sidebar";
 
-interface ChildProps {
-  toggleSidebar: () => void;
-  scrollToTop: () => void; // この行を追加します
-}
-
 export default function ContactPage() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
