@@ -62,7 +62,7 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#fffffb] font-sans text-[#333333]">
-      <Header toggleSidebar={toggleSidebar} scrollToTop={scrollToTop} />
+      <Header toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
       <div className="mx-auto max-w-4xl">
