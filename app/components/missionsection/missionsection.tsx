@@ -22,21 +22,27 @@ export default function MissionSection() {
           <div className="mb-6 space-y-6">
             <div>
               <h3 className="text-xl font-bold text-[#333333]">Mission</h3>
-              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟の存在価値ー</p>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">
+                ー関東学生少林寺拳法連盟の存在価値ー
+              </p>
               <p className="mt-2 leading-relaxed text-[#333333]/80">
                 関東圏内の大学少林寺拳法部を束ね、他大学同士の交流である「横のつながり」と、全大学のOBOGとの交流である「横のつながり」の双方を提供する柱となる。
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#333333]">Vision</h3>
-              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟が目指す姿ー</p>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">
+                ー関東学生少林寺拳法連盟が目指す姿ー
+              </p>
               <p className="mt-2 leading-relaxed text-[#333333]/80">
                 出身や環境を凌駕し、さまざまな人が交流できる唯一無二の環境となり、お互いに協力しあい、時に切磋琢磨しあう、最高の居場所を創造する。
               </p>
             </div>
             <div>
               <h3 className="text-xl font-bold text-[#333333]">Value</h3>
-              <p className="mt-1 text-sm font-semibold text-[#d4af37]">ー関東学生少林寺拳法連盟連盟の価値観ー</p>
+              <p className="mt-1 text-sm font-semibold text-[#d4af37]">
+                ー関東学生少林寺拳法連盟連盟の価値観ー
+              </p>
               <p className="mt-2 leading-relaxed text-[#333333]/80">
                 本音でぶつかり合うからこそ生まれる、大学の垣根を超えた新しい溜まり場。
               </p>
@@ -46,7 +52,7 @@ export default function MissionSection() {
             <p className="text-sm text-[#333333]/60">
               令和8年度 関東学生少林寺連盟 委員長
             </p>
-            <p className="text-lg font-bold text-[#333333]">山田 太郎</p>
+            <p className="text-lg font-bold text-[#333333]">市川　晴喜</p>
           </div>
         </div>
       </div>
