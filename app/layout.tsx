@@ -32,6 +32,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "少林寺拳法 学生連盟",
   description: "少林寺拳法 学生連盟 公式サイト",
+  verification: {
+    google: "diDWY_16wSbmb_Lr1WZ9VXgE_I12A4wh4DX1euNSNT0",
+  },
 };
 
 /**
