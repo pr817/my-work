@@ -6,8 +6,10 @@ import { Menu } from "lucide-react";
 
 export default function Header({
   toggleSidebar,
+  scrollToTop,
 }: {
   toggleSidebar: () => void;
+  scrollToTop?: () => void;
 }) {
   const [isVisible, setIsVisible] = useState(false);
 
