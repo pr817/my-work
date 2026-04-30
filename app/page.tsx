@@ -14,6 +14,16 @@ import Footer from "app/components/ui/Footer/Footer";
 import Taikaisec from "app/components/taikaisection/page";
 // 外部ファイル化されていた型とデータをファイル内に統合
 
+// app/layout.tsx など
+
+export const metadata = {
+  title: "少林寺拳法 学生連盟公式サイト",
+  description: "公式サイトです",
+  // 👇この3行を追加します（コピーした文字列を貼り付け）
+  verification: {
+    google: "diDWY_16wSbmb_Lr1WZ9VXgE_I12A4wh4DX1euNSNT0",
+  },
+};
 export default function ShorinjiFederationTop() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
