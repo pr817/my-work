@@ -21,7 +21,7 @@ export default function TaikaiSchedulePage() {
           <div className="mb-8 flex justify-center">
             <div className="relative h-48 w-full max-w-md overflow-hidden rounded-xl">
               <Image
-                src="/IMG_9523.jpg"
+                src="/DSC04707.jpg"
                 alt="大会イメージ"
                 fill
                 className="object-cover"

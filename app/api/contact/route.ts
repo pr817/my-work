@@ -1,22 +1,22 @@
-import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { NextRequest, NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 export async function POST(request: NextRequest) {
   try {
     const { name, email, message } = await request.json();
 
     // 管理者メールアドレス（環境変数から取得、なければデフォルト）
-    const adminEmail = process.env.ADMIN_EMAIL || 'admin@example.com';
+    const adminEmail = process.env.ADMIN_EMAIL || "pr@kantogs.org";
     const smtpHost = process.env.SMTP_HOST;
-    const smtpPort = parseInt(process.env.SMTP_PORT || '587');
+    const smtpPort = parseInt(process.env.SMTP_PORT || "587");
     const smtpUser = process.env.SMTP_USER;
     const smtpPassword = process.env.SMTP_PASS;
 
     if (!smtpHost || !smtpUser || !smtpPassword) {
-      console.error('Missing SMTP environment variables');
+      console.error("Missing SMTP environment variables");
       return NextResponse.json(
-        { error: 'Server configuration error' },
-        { status: 500 }
+        { error: "Server configuration error" },
+        { status: 500 },
       );
     }
 
@@ -46,7 +46,7 @@ ${message}
 <p><strong>名前:</strong> ${name}</p>
 <p><strong>メールアドレス:</strong> ${email}</p>
 <p><strong>メッセージ:</strong></p>
-<p>${message.replace(/\n/g, '<br>')}</p>
+<p>${message.replace(/\n/g, "<br>")}</p>
       `,
     });
 
@@ -54,7 +54,7 @@ ${message}
     await transporter.sendMail({
       from: `"Contact Form" <${smtpUser}>`,
       to: email,
-      subject: 'お問い合わせを受け付けました',
+      subject: "お問い合わせを受け付けました",
       text: `
 ${name} 様
 
@@ -77,7 +77,7 @@ ${message}
 <ul>
 <li><strong>名前:</strong> ${name}</li>
 <li><strong>メールアドレス:</strong> ${email}</li>
-<li><strong>メッセージ:</strong> ${message.replace(/\n/g, '<br>')}</li>
+<li><strong>メッセージ:</strong> ${message.replace(/\n/g, "<br>")}</li>
 </ul>
 <p>内容を確認し、折り返しご連絡させていただきます。<br>
 しばらくお待ちください。</p>
@@ -86,10 +86,10 @@ ${message}
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error("Error sending email:", error);
     return NextResponse.json(
-      { error: 'Failed to send message' },
-      { status: 500 }
+      { error: "Failed to send message" },
+      { status: 500 },
     );
   }
 }

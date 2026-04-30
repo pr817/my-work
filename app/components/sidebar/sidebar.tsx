@@ -110,7 +110,6 @@ export default function Sidebar({
             title="ニュース"
             subItems={[
               { label: "最新のお知らせ", path: "/news" },
-              { label: "大会結果", path: "/news/results", disabled: true },
               { label: "プレスリリース", path: "/news/press", disabled: true },
             ]}
           />
@@ -131,7 +130,7 @@ export default function Sidebar({
               {
                 label: "過去の記録",
                 path: "/competition/archive",
-                disabled: true,
+                disabled: false,
               },
             ]}
           />
@@ -139,19 +138,27 @@ export default function Sidebar({
             title="連盟について"
             subItems={[
               { label: "組織図", path: "/about/organization", disabled: true },
-              { label: "加盟校一覧", path: "/about/schools" },
+              { label: "加盟校一覧", path: "/about/schools", disabled: true },
             ]}
           />
           <SidebarItem
             title="加盟・支援"
             subItems={[
-              { label: "新入生・高校生へ", path: "/support/join" },
+              {
+                label: "新入生・高校生へ",
+                path: "/support/join",
+                disabled: true,
+              },
               {
                 label: "OB・OGの皆様へ",
                 path: "/support/alumni",
                 disabled: true,
               },
-              { label: "ご協賛のお願い", path: "/support/sponsor" },
+              {
+                label: "ご協賛のお願い",
+                path: "/support/sponsor",
+                disabled: true,
+              },
             ]}
           />
         </nav>

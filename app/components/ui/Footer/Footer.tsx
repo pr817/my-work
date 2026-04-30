@@ -23,7 +23,10 @@ export default function Footer({ scrollToTop }: { scrollToTop: () => void }) {
         </div>
 
         <div className="flex gap-6 text-sm">
-          <a href="/contact" className="transition-colors hover:text-[#fffffb]">
+          <a
+            href="components/contactspace"
+            className="transition-colors hover:text-[#fffffb]"
+          >
             お問い合わせ
           </a>
         </div>

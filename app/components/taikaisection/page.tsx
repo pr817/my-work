@@ -26,7 +26,7 @@ export default function TaikaiSection() {
 
   return (
     <main className="min-h-screen bg-[#181b26] py-16">
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-4 py-30">
         <h1 className="mb-10 text-center text-3xl font-bold tracking-widest text-[#fffffb]">
           大会一覧
         </h1>

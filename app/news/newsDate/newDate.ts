@@ -15,6 +15,14 @@ export type NewsItem = {
 // 実際のデータを定義してexportする
 export const newsData: NewsItem[] = [
   {
+    id: 2,
+    category: "all",
+    date: "2026.05.04",
+    tag: "大会",
+    title: "関東学生大会の簡易的なタイムスケジュールの掲載",
+    path: "/news/2",
+  },
+  {
     id: 1,
     category: "all",
     date: "2026.05.03",
@@ -23,43 +31,11 @@ export const newsData: NewsItem[] = [
     path: "/news/1",
   },
   {
-    id: 2,
+    id: 100,
     category: "all",
     date: "2026.05.02",
     tag: "お問い合わせ",
     title: "ご意見・ご要望をお聞かせください（お問い合わせページ公開）",
-    path: "/contactspace",
-  },
-  {
-    id: 3,
-    category: "all",
-    date: "2026.05.01",
-    tag: "作成者より",
-    title: "ウェブサイト制作にあたってのメッセージ",
-    path: "/news/3",
-  },
-  {
-    id: 4,
-    category: "internal",
-    date: "2026.04.30",
-    tag: "活動報告",
-    title: "令和8年度 春季練習会の実施について",
-    path: "/news/4",
-  },
-  {
-    id: 5,
-    category: "obog",
-    date: "2026.04.28",
-    tag: "OB・OG",
-    title: "OB・OG交流会の日程が決定しました",
-    path: "/news/5",
-  },
-  {
-    id: 6,
-    category: "all",
-    date: "2026.04.25",
-    tag: "今後の予定",
-    title: "夏期合宿の計画について（準備中）",
-    path: "/news/6",
+    path: "components/contactspace",
   },
 ];

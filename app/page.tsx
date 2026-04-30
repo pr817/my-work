@@ -11,6 +11,7 @@ import HistorySection from "app/components/VerticalHistorySection/VerticalHistor
 import TestimonialSection from "app/components/TestimonialItem/TestimonialItem";
 import CtaSection from "app/components/CtaSection/CtaSection";
 import Footer from "app/components/ui/Footer/Footer";
+import Taikaisec from "app/components/taikaisection/page";
 // 外部ファイル化されていた型とデータをファイル内に統合
 
 export default function ShorinjiFederationTop() {
@@ -28,6 +29,7 @@ export default function ShorinjiFederationTop() {
         <HeroSection />
         <MissionSection />
         <Newssection />
+        <Taikaisec />
         <CtaSection />
       </main>
 

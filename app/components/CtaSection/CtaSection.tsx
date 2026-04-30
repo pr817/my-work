@@ -39,7 +39,7 @@ export default function CtaSection() {
             />
           </a>
           <a
-            href="/contactspace"
+            href="components/contactspace"
             className="group flex items-center justify-center gap-2 rounded-full border border-white/35 bg-white/16 px-8 py-4 text-lg font-bold text-white/95 shadow-[0_8px_24px_rgba(0,0,0,0.16)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/24 active:scale-95"
           >
             お問い合わせ

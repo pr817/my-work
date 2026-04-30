@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { newsData, type NewsCategory } from "../news-data";
+import { newsData, type NewsCategory } from "app/news/newsDate/newDate";
 import Header from "../components/ui/Header/Header";
 import Sidebar from "../components/sidebar/sidebar";
 

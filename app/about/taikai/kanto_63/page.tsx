@@ -17,7 +17,7 @@ export default function Kanto63Page() {
       <Header toggleSidebar={toggleSidebar} />
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <main className="py-16">
+      <main className="py-30">
         <div className="mx-auto max-w-4xl px-4">
           <h1 className="mb-6 text-center text-3xl font-bold tracking-widest text-[#fffffb]">
             第６３回関東学生大会
@@ -48,7 +48,7 @@ export default function Kanto63Page() {
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] opacity-50 cursor-default select-none"
               aria-disabled
             >
-              準備中
+              大会結果　準備中
             </div>
             <Link
               href="/news/2"

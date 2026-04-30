@@ -181,21 +181,27 @@ export default function CategoryDetailPage() {
               : "translate-y-10 opacity-0"
           }`}
         >
-          <div className="max-w-6xl mx-auto relative h-28 md:h-36">
+          <div className="max-w-6xl mx-auto flex items-end justify-between h-28 md:h-36 px-4">
             {categoryKeys.map((key) => {
               const cat = CATEGORY_DATA[key];
               const orderedIndex = orderedKeys.indexOf(key);
               const isActive = orderedIndex === 0;
 
-              let transformStyle = "";
+              let orderClass = "";
+              let scaleClass = "";
+              let opacityClass = "";
               if (orderedIndex === 0) {
-                transformStyle = "left-0 scale-100 opacity-100 z-10";
+                orderClass = "order-2";
+                scaleClass = "scale-100";
+                opacityClass = "opacity-100";
               } else if (orderedIndex === 1) {
-                transformStyle =
-                  "left-[30%] md:left-[250px] lg:left-[350px] scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer";
+                orderClass = "order-1";
+                scaleClass = "scale-50";
+                opacityClass = "opacity-60";
               } else {
-                transformStyle =
-                  "left-[70%] md:left-[550px] lg:left-[650px] scale-50 opacity-60 hover:opacity-100 z-0 cursor-pointer";
+                orderClass = "order-3";
+                scaleClass = "scale-50";
+                opacityClass = "opacity-60";
               }
 
               return (
@@ -203,14 +209,16 @@ export default function CategoryDetailPage() {
                   key={key}
                   href={`#${key}`}
                   onClick={(e) => handleCategoryClick(e, key)}
-                  className={`absolute bottom-0 origin-bottom-left flex flex-col items-start transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] whitespace-nowrap ${transformStyle}`}
+                  className={`flex flex-col items-start transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] whitespace-nowrap ${orderClass} ${scaleClass} ${opacityClass} hover:opacity-100 cursor-pointer`}
                 >
                   <p
                     className={`mb-1 text-sm font-bold tracking-[0.5em] uppercase transition-colors duration-500 ${isActive ? "text-[#d4af37]" : "text-white/40"}`}
                   >
                     {cat.subtitle}
                   </p>
-                  <h1 className={`${isActive ? 'text-5xl md:text-8xl' : 'text-3xl md:text-6xl'} font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]`}>
+                  <h1
+                    className={`${isActive ? "text-5xl md:text-8xl" : "text-3xl md:text-6xl"} font-black tracking-widest drop-shadow-[0_10px_40px_rgba(0,0,0,0.6)] text-[#fffffb]`}
+                  >
                     {cat.title}
                   </h1>
                 </a>
