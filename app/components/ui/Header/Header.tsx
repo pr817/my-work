@@ -54,7 +54,7 @@ export default function Header({
               />
             </div>
             <span className="ml-3 text-lg font-bold tracking-widest text-[#333333] transition-colors duration-300 group-hover:text-[#d4af37] md:text-xl">
-              関東学生少林寺連盟
+              関東学生少林寺拳法連盟
             </span>
           </div>
 
