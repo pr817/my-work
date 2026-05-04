@@ -45,10 +45,10 @@ export default function Kanto63Page() {
 
           <div className="mt-10 flex items-center justify-center gap-6">
             <Link
-              href="/Users/hirohiro/Documents/プログラミングフォルダ/ウェブ開発環境/my-work/public/honsen_kanto_63.pdf"
+              href="/honsen_kanto_63.pdf"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb]  hover:bg-[#d4af37] hover:text-[#fffffb] transition"
             >
-              大会結果　準備中
+              大会結果を見る
             </Link>
             <Link
               href="/news/2"
