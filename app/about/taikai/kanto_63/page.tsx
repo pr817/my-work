@@ -44,11 +44,13 @@ export default function Kanto63Page() {
           </p>
 
           <div className="mt-10 flex justify-center gap-6">
-            <div
-              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] opacity-50 cursor-default select-none"
-              aria-disabled
-            >
-              大会結果　準備中
+            <div>
+              <Link
+                href="/news/results/page.tsx"
+                className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb]  hover:bg-[#d4af37] hover:text-[#fffffb] transition"
+              >
+                大会結果　準備中
+              </Link>
             </div>
             <Link
               href="/news/2"
