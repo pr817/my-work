@@ -45,19 +45,19 @@ export default function Kanto63Page() {
 
           <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
             <Link
-              href="/yosen_kanto_63.pdf"
+              href="https://drive.google.com/file/d/1imXvCQsLvN4l47sbpEXlI8b5EuuajQ-o/view?usp=drive_link"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
             >
               予選結果
             </Link>
             <Link
-              href="/honsen_kanto_63.pdf"
+              href="https://drive.google.com/file/d/1i8BAfVIKCLjIhU8i_mVFF-0KXBWwIP9g/view?usp=drive_link"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
             >
               本選の結果
             </Link>
             <Link
-              href="/sogo_kanto_63.pdf"
+              href="https://docs.google.com/spreadsheets/d/1hVhwl_Lp05wnCBuPXYrbTnx2N8k_OoZ5FyJXFW0dspk/edit?usp=drive_link"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
             >
               関東総合成績

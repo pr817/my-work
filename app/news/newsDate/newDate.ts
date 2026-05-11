@@ -15,6 +15,14 @@ export type NewsItem = {
 // 実際のデータを定義してexportする
 export const newsData: NewsItem[] = [
   {
+    id: 3,
+    category: "all",
+    date: "2026.05.11",
+    tag: "大会",
+    title: "関東学生大会の大会結果の掲載",
+    path: "/news/3",
+  },
+  {
     id: 2,
     category: "all",
     date: "2026.05.04",
