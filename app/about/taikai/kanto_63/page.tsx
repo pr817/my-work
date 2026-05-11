@@ -43,18 +43,24 @@ export default function Kanto63Page() {
             第63回関東学生少林寺拳法大会。各大学の代表が一堂に会し、日頃の鍛錬の成果を競います。
           </p>
 
-          <div className="mt-10 flex items-center justify-center gap-6">
+          <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
             <Link
-              href="/honsen_kanto_63.pdf"
-              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb]  hover:bg-[#d4af37] hover:text-[#fffffb] transition"
-            >
-              大会結果を見る
-            </Link>
-            <Link
-              href="/news/2"
+              href="/yosen_kanto_63.pdf"
               className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
             >
-              タイムスケジュール
+              予選結果
+            </Link>
+            <Link
+              href="/honsen_kanto_63.pdf"
+              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
+            >
+              本選の結果
+            </Link>
+            <Link
+              href="/sogo_kanto_63.pdf"
+              className="rounded-xl border border-[#d4af37] bg-[#181b26] px-6 py-3 text-[#fffffb] hover:bg-[#d4af37] hover:text-[#fffffb] transition"
+            >
+              関東総合成績
             </Link>
           </div>
         </div>
