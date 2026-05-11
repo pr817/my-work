@@ -9,7 +9,7 @@ export default function NewsDetailPage() {
           <h1 className="mt-4 text-4xl font-bold text-[#333333]">
             第６３回　関東学生大会　大会結果を公開
           </h1>
-          <p className="mt-2 text-[#333333]/60">2026.05.03</p>
+          <p className="mt-2 text-[#333333]/60">2026.05.11</p>
         </div>
         <div className="prose max-w-none rounded-3xl border border-[#333333]/5 bg-white p-8 shadow-sm">
           <p>
